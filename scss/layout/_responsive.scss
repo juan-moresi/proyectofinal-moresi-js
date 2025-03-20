@@ -1,0 +1,79 @@
+/* Responsive Design */
+@media (max-width: $breakpoint-md) {
+  .currencies-panel, .currency-form-panel, .history-panel {
+    width: 95%;
+    padding: 1.5rem;
+  }
+  
+  .form-buttons {
+    flex-direction: column;
+  }
+  
+  .confirm-buttons {
+    flex-direction: column;
+    
+    button {
+      width: 100%;
+    }
+  }
+  
+  .currencies-panel {
+    width: 95%;
+    padding: 15px;
+    
+    .currencies-table {
+      th, td {
+        padding: 12px 15px;
+      }
+    }
+    
+    .currency-code-cell {
+      font-size: 1em;
+    }
+    
+    .currency-rate-cell {
+      font-size: 1em;
+      padding-right: 15px;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  .message {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .currencies-table {
+    th, td {
+      padding: 0.5rem;
+      font-size: 0.9rem;
+    }
+  }
+  
+  .history-panel {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    
+    &-header {
+      padding: 1rem;
+    }
+    
+    h2 {
+      font-size: 1.25rem;
+    }
+  }
+  
+  .history-table {
+    td, th {
+      padding: 0.75rem 0.5rem;
+      font-size: 0.8rem;
+    }
+  }
+  
+  .empty-history {
+    padding: 2rem 1rem;
+  }
+}

@@ -1,0 +1,82 @@
+/* Encabezado del chat con gradiente de color */
+.chat-header {
+  padding: 1.5rem; 
+  @include gradient(135deg, $primary-color, $secondary-color);
+  border-radius: $border-radius-lg $border-radius-lg 0 0;
+  position: relative;
+  @include flex(row, center, center, nowrap);
+  text-align: center;
+  
+  h1 {
+    color: white; 
+    font-size: 1.75rem; 
+    font-weight: 700; 
+    text-align: center;
+    margin: 0; 
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.5px;
+    flex: 1;
+    
+    @include respond-to(medium) {
+      font-size: 1.5rem;
+    }
+    
+    @include respond-to(small) {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+.last-update {
+  position: absolute;
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.85rem;
+  color: white;
+  background: none;
+  padding: 6px 12px;
+  border-radius: $border-radius-sm;
+  box-shadow: none;
+  border: none;
+  @include flex(column, flex-start, flex-start, nowrap);
+  gap: 2px;
+  
+  span {
+    color: white;
+    font-weight: 500;
+    font-size: 0.75rem;
+  }
+  
+  @include respond-to(medium) {
+    position: static;
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Botón para limpiar el chat */
+#clearChatBtn {
+  position: absolute;
+  right: 1.5rem;
+  padding: 0.5rem 1rem;
+  @include gradient(135deg, $error-color, #ef4444);
+  color: white;
+  border: none; 
+  border-radius: $border-radius-sm; 
+  cursor: pointer;
+  font-weight: 600; 
+  transition: $transition; 
+  z-index: 10;
+  
+  &:hover {
+    transform: translateY(-2px); 
+    box-shadow: $shadow-md;
+    @include gradient(135deg, #ef4444, $error-color);
+  }
+  
+  @include respond-to(small) {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}

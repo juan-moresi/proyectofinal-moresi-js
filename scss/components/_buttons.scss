@@ -1,0 +1,80 @@
+/* Botones generales */
+button {
+  border: none;
+  cursor: pointer;
+  transition: $transition;
+  font-family: inherit;
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+/* Botones del panel de historial */
+.history-panel-buttons {
+  padding: 1rem 2rem;
+  @include flex(row, space-between, center, nowrap);
+  gap: 1rem;
+  background: $surface-color;
+  border-bottom: 1px solid $border-color;
+}
+
+.close-history-btn, .clear-history-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  
+  @include respond-to(medium) {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+.close-history-btn {
+  background: white;
+  color: $text-primary;
+  border: 2px solid $border-color;
+}
+
+.clear-history-btn {
+  @include gradient(135deg, $error-color, #ef4444);
+  color: white;
+  border: none;
+}
+
+/* Botones del panel de confirmación */
+.confirm-buttons {
+  @include flex(row, center, center, nowrap);
+  gap: 1rem;
+  
+  button {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: $border-radius-sm;
+    font-weight: 600;
+    cursor: pointer;
+    transition: $transition;
+  }
+}
+
+.confirm-no {
+  background: $background-color;
+  color: $text-primary;
+  
+  &:hover {
+    background: $border-color;
+  }
+}
+
+.confirm-yes {
+  @include gradient(135deg, $error-color, #ef4444);
+  color: white;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-md;
+  }
+}

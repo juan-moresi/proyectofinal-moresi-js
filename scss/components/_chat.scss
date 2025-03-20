@@ -1,0 +1,54 @@
+// Chat container
+.chat-container {
+  @include flex(column, flex-start, stretch, 1rem);
+  padding: 1rem;
+  background-color: $background-color;
+  border-radius: 8px;
+  box-shadow: $shadow-sm;
+}
+
+// Chat message
+.chat-message {
+  @include flex(row, flex-start, flex-start, 1rem);
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: white;
+  
+  &.user-message {
+    align-self: flex-end;
+    background-color: $primary-color;
+    color: white;
+  }
+  
+  &.bot-message {
+    align-self: flex-start;
+    background-color: #6c757d;
+    color: white;
+  }
+}
+
+// Chat input
+.chat-input {
+  @include flex(row, space-between, stretch, 1rem);
+  
+  input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #6c757d;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: $primary-color;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

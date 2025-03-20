@@ -1,0 +1,24 @@
+// Typography styles
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 700;
+  color: $text-primary;
+}
+
+p {
+  line-height: 1.5;
+  color: $text-secondary;
+}
+
+.currency-code {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: $primary-color;
+  margin-bottom: 0.25rem;
+}
+
+.currency-name {
+  font-size: 0.85rem;
+  color: $text-secondary;
+  text-align: center;
+}

@@ -1,0 +1,194 @@
+/* ==========================================================================
+   Formularios
+   ========================================================================== */
+
+/* Estilos para el panel de agregar moneda */
+.currency-form-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.7);
+  background: white;
+  padding: 2rem;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-lg;
+  width: 80%;
+  max-width: 400px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  
+  h2 {
+    margin: 0 0 1.5rem 0;
+    color: $primary-color;
+    font-size: 1.5rem;
+  }
+  
+  @include respond-to(medium) {
+    width: 95%;
+    padding: 1.5rem;
+  }
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: $text-primary;
+    font-weight: 500;
+  }
+  
+  input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius-sm;
+    font-size: 1rem;
+    
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.1);
+    }
+  }
+}
+
+.error-message {
+  color: $error-color;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+  
+  button {
+    padding: 0.75rem 1.5rem;
+    border-radius: $border-radius-sm;
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition;
+    
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: $shadow-md;
+    }
+  }
+  
+  button[type="button"] {
+    background: $background-color;
+    border: 1px solid $border-color;
+    color: $text-primary;
+  }
+  
+  button[type="submit"] {
+    background: $primary-color;
+    border: none;
+    color: white;
+  }
+  
+  @include respond-to(medium) {
+    flex-direction: column;
+  }
+}
+
+/* Estilos para el panel de confirmación */
+.confirm-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.confirm-content {
+  background: white;
+  padding: 2rem;
+  border-radius: $border-radius-md;
+  box-shadow: $shadow-lg;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  animation: scaleIn 0.3s ease-out;
+  
+  h3 {
+    color: $text-primary;
+    margin: 0 0 1rem 0;
+    font-size: 1.5rem;
+  }
+  
+  p {
+    color: $text-secondary;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+}
+
+.panel-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 999;
+  
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* Autocompletado */
+.autocomplete-list {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid $border-color;
+  border-radius: $border-radius-sm;
+  box-shadow: $shadow-md;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  margin-bottom: 0.5rem;
+  display: none;
+}
+
+.autocomplete-item {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: $transition;
+  border-bottom: 1px solid $border-color;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  &:hover {
+    background: $background-color;
+    color: $primary-color;
+  }
+}
