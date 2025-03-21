@@ -20,7 +20,7 @@ Esta aplicación es un conversor de monedas interactivo que utiliza un ChatBot p
 
 ### 💸 Realizar una Conversión
 
-1. ✍️ Escribe "Nombre" para guardarlo en el storage para proximos ingresos.
+1. ✍️ Escribe tu "Nombre" para guardarlo en el storage para proximos ingresos.
 2. 🤖 Sigue los pasos que te indica el ChatBot:
    - 💰 Ingresa el monto a convertir
    - 🔄 Selecciona la moneda de origen (ej: USD, EUR, ARS)
