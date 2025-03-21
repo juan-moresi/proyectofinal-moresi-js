@@ -46,7 +46,7 @@ Esta aplicación es un conversor de monedas interactivo que utiliza un ChatBot p
 ### ➕ Monedas Personalizadas
 
 1. Para agregar una moneda personalizada:
-   - 🆕 Presiona el boton "AGREFAR MONEDA"
+   - 🆕 Presiona el boton "AGREGAR MONEDA"
    - ✏️ Completa los campos del formulario
      - 🔤 Código de la moneda (3 letras)
      - 📝 Nombre de la moneda
