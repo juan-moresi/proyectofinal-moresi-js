@@ -84,7 +84,7 @@ Para iniciar el servidor estático y ejecutar la aplicación localmente:
    ```
 
 3. 🌐 Abre tu navegador y visita `http://localhost:3001`
-git status
+   
 
 > 💡 El puerto predeterminado es 3001, pero puedes modificarlo en el archivo `server.js` si necesitas usar un puerto diferente.
 
