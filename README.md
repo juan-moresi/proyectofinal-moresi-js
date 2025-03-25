@@ -32,7 +32,7 @@ Esta aplicación es un conversor de monedas interactivo que utiliza un ChatBot p
 - 💾 Las últimas 5 conversiones se guardan automáticamente
 - 📊 Puedes acceder al historial haciendo click en el botón "HISTORIAL"
 
-- ❌ Puedes borrar el historial usando el botón "CERRAR HISTORIAL"
+- ❌ Puedes borrar el historial usando el botón "BORRAR HISTORIAL"
 - 🔑 Presiona la tecla ESC para cerrar el panel del historial
 
 ### 💰 Monedas Disponibles
