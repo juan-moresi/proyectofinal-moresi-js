@@ -114,7 +114,5 @@ git status
 📚 Se utilizó SASS para compilar el CSS y usar este proyecto para aplicar lo aprendido en el curso de Desarrollo Web
 
 
-DIAGRAMA
 
-![diagram](https://github.com/user-attachments/assets/5e3d1d9a-3824-4af2-b325-cf77d6c08f1d)
 
