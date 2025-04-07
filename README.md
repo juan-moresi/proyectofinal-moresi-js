@@ -20,7 +20,7 @@ Esta aplicación es un conversor de monedas interactivo que utiliza un ChatBot p
 
 ### 💸 Realizar una Conversión
 
-1. ✍️ Escribe "Nombre" para guardarlo en el storage para proximos ingresos.
+1. ✍️ Escribe tu "Nombre" para guardarlo en el storage para proximos ingresos.
 2. 🤖 Sigue los pasos que te indica el ChatBot:
    - 💰 Ingresa el monto a convertir
    - 🔄 Selecciona la moneda de origen (ej: USD, EUR, ARS)
@@ -39,6 +39,7 @@ Esta aplicación es un conversor de monedas interactivo que utiliza un ChatBot p
 
 - 💾 Las últimas conversiones y compras se guardan automáticamente
 - 📊 Puedes acceder al historial haciendo click en el botón "HISTORIAL"
+
 - ❌ Puedes borrar el historial usando el botón "CERRAR HISTORIAL"
 - 🔑 Presiona la tecla ESC para cerrar el panel del historial
 
@@ -93,9 +94,16 @@ Para iniciar el servidor estático y ejecutar la aplicación localmente:
    ```
 
 3. 🌐 Abre tu navegador y visita `http://localhost:3001`
+git status
 
 > 💡 El puerto predeterminado es 3001, pero puedes modificarlo en el archivo `server/server.js` si necesitas usar un puerto diferente.
 
 ---
 
 📚 Se utilizó SASS para compilar el CSS y usar este proyecto para aplicar lo aprendido en el curso de Desarrollo Web
+
+
+DIAGRAMA
+
+![diagram](https://github.com/user-attachments/assets/5e3d1d9a-3824-4af2-b325-cf77d6c08f1d)
+
