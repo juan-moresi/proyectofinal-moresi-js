@@ -13,7 +13,18 @@ Esta aplicación es un conversor de monedas interactivo que utiliza un ChatBot p
 
 ## 🛠️ Requisitos Previos
 
-- 🌐 Navegador web moderno
+- 🌐 Navegador web moderno (Chrome, Firefox, Edge o Safari en sus versiones recientes)
+- 📦 Node.js (v14.0.0 o superior)  -- para ejecutar server
+- 📦 npm (v6.0.0 o superior) -- para ejecutar server
+- 🔌 Conexión a internet (para actualización de tasas de cambio)
+
+### 📚 Dependencias Principales
+
+- 🚀 Express.js: Para el servidor web estático
+- 💱 Currency.js: Para cálculos precisos de conversión
+- 🔄 Axios: Para peticiones HTTP a APIs de tasas de cambio
+- 🔐 Dotenv: Para gestión de variables de entorno
+- 🎨 Sass: Para compilación de estilos CSS
 
 
 ## 📝 Cómo Usar
