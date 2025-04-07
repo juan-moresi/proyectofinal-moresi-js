@@ -309,9 +309,26 @@ class CurrencyConverter {
                 throw new Error('No se pudieron obtener las tasas de cambio');
             }
 
-            // Usar la función currency global
-            const amountInUSD = currency(amount).divide(fromRate);
-            const result = currency(amountInUSD).multiply(toRate);
+            // Verificar si currency está disponible globalmente (desde el script en HTML)
+            let currencyFunc;
+            if (typeof window !== 'undefined' && typeof window.currency !== 'undefined') {
+                currencyFunc = window.currency;
+            } else {
+                // Definir una función de respaldo simple si currency.js no está disponible
+                currencyFunc = function(amount) {
+                    const value = parseFloat(amount);
+                    return {
+                        value: value,
+                        divide: function(divisor) { return currencyFunc(value / divisor); },
+                        multiply: function(multiplier) { return currencyFunc(value * multiplier); }
+                    };
+                };
+                console.warn('La biblioteca currency.js no está disponible. Usando implementación de respaldo.');
+            }
+            
+            // Realizar la conversión
+            const amountInUSD = currencyFunc(amount).divide(fromRate);
+            const result = currencyFunc(amountInUSD).multiply(toRate);
 
             return {
                 amount: parseFloat(result.value.toFixed(2)),

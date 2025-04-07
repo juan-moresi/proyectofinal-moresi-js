@@ -9,7 +9,7 @@ Esta aplicación es un conversor de monedas interactivo que utiliza un ChatBot p
 - 🔄 Actualización automática de tasas de cambio
 - ➕ Soporte para monedas personalizadas
 - 📊 Historial de conversiones
-- 📱 Diseño responsive
+- 💰 Simulación de compra de monedas
 
 ## 🛠️ Requisitos Previos
 
@@ -26,12 +26,19 @@ Esta aplicación es un conversor de monedas interactivo que utiliza un ChatBot p
    - 🔄 Selecciona la moneda de origen (ej: USD, EUR, ARS)
    - 🎯 Selecciona la moneda de destino
 3. ✨ El resultado se mostrará instantáneamente
+4. 💵 Después de la conversión, podrás realizar una compra ficticia de la moneda convertida
+
+### 💰 Comprar Monedas
+
+1. 🛒 Después de realizar una conversión, se te ofrecerá la opción de comprar la moneda convertida
+2. ✅ Al confirmar la compra, se mostrará un mensaje de confirmación en el chat
+3. 📝 La compra se registrará automáticamente en el historial
+4. ❌ Puedes cancelar la compra en cualquier momento
 
 ### 📜 Historial de Conversiones
-|
-- 💾 Las últimas 5 conversiones se guardan automáticamente
-- 📊 Puedes acceder al historial haciendo click en el botón "HISTORIAL"
 
+- 💾 Las últimas conversiones y compras se guardan automáticamente
+- 📊 Puedes acceder al historial haciendo click en el botón "HISTORIAL"
 - ❌ Puedes borrar el historial usando el botón "CERRAR HISTORIAL"
 - 🔑 Presiona la tecla ESC para cerrar el panel del historial
 
@@ -42,11 +49,12 @@ Esta aplicación es un conversor de monedas interactivo que utiliza un ChatBot p
 - 📋 Incluye listado de monedas predeterminadas del sistema
 - ⭐ Muestra también las monedas personalizadas que hayas agregado
 - 💱 Consulta las tasas de cambio actuales de cada moneda
+- 🔎 Utiliza el buscador para encontrar rápidamente una moneda específica
 
 ### ➕ Monedas Personalizadas
 
 1. Para agregar una moneda personalizada:
-   - 🆕 Presiona el boton "AGREFAR MONEDA"
+   - 🆕 Presiona el boton "AGREGAR MONEDA"
    - ✏️ Completa los campos del formulario
      - 🔤 Código de la moneda (3 letras)
      - 📝 Nombre de la moneda
@@ -65,7 +73,8 @@ Las tasas de cambio se actualizan automáticamente para mantener los valores act
 
 - ⚡ La aplicación utiliza tasas de cambio en tiempo real
 - 💾 Las monedas personalizadas se guardan localmente en tu navegador
-- 📊 El historial de conversiones se mantiene entre sesiones
+- 📊 El historial de conversiones y compras se mantiene entre sesiones
+- 🔄 La función de compra es una simulación y no realiza transacciones reales
 
 ---
 
@@ -84,9 +93,8 @@ Para iniciar el servidor estático y ejecutar la aplicación localmente:
    ```
 
 3. 🌐 Abre tu navegador y visita `http://localhost:3001`
-git status
 
-> 💡 El puerto predeterminado es 3001, pero puedes modificarlo en el archivo `server.js` si necesitas usar un puerto diferente.
+> 💡 El puerto predeterminado es 3001, pero puedes modificarlo en el archivo `server/server.js` si necesitas usar un puerto diferente.
 
 ---
 

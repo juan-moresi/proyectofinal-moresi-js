@@ -1,0 +1,183 @@
+/* ==========================================================================
+   Panel de Compra y Confirmación
+   ========================================================================== */
+
+/* Panel de confirmación de compra */
+.purchase-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+  
+  &.show {
+    display: flex;
+  }
+}
+
+.purchase-content {
+  background: white;
+  padding: 2rem;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-lg;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  animation: scaleIn 0.3s ease-out;
+  
+  h3 {
+    margin: 0 0 1rem 0;
+    color: $text-primary;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  p {
+    color: $text-secondary;
+    margin-bottom: 1.5rem;
+    
+    #purchaseAmount {
+      font-weight: 700;
+      color: $success-color;
+    }
+    
+    #purchaseCurrency {
+      font-weight: 700;
+      color: $primary-color;
+    }
+  }
+  
+  .purchase-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    
+    button {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: $border-radius-md;
+      font-weight: 600;
+      cursor: pointer;
+      transition: $transition;
+      
+      &.purchase-no {
+        background: #f1f5f9;
+        color: $text-primary;
+        
+        &:hover {
+          background: $background-color;
+          transform: translateY(-2px);
+          box-shadow: $shadow-md;
+        }
+      }
+      
+      &.purchase-yes {
+        background: $success-color;
+        color: white;
+        
+        &:hover {
+          background: darken($success-color, 5%);
+          transform: translateY(-2px);
+          box-shadow: $shadow-md;
+        }
+      }
+    }
+  }
+  
+  @include respond-to(small) {
+    padding: 1.5rem;
+    
+    .purchase-buttons {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+}
+
+/* Mensaje de confirmación de compra */
+.purchase-confirmation {
+  background: linear-gradient(135deg, #ecfdf5 0%, #ffffff 100%);
+  border: 2px solid $success-color;
+  box-shadow: 0 4px 15px rgba(5, 150, 105, 0.15);
+  font-weight: 600;
+  padding: 1.5rem;
+  position: relative;
+  color: $text-primary;
+  @include flex(row, flex-start, center, nowrap);
+  gap: 1rem;
+  margin: 1rem 0;
+  border-radius: $border-radius-lg;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(5, 150, 105, 0.2);
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    bottom: 0;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-left: 2px solid $success-color;
+    border-bottom: 2px solid $success-color;
+    clip-path: polygon(100% 0, 0 100%, 100% 100%);
+  }
+  
+  .purchase-content {
+    @include flex(row, flex-start, center, nowrap);
+    gap: 1rem;
+    width: 100%;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    animation: none;
+    
+    @include respond-to(small) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  
+  .purchase-icon {
+    font-size: 1.5rem;
+    background: $success-color;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    @include flex(row, center, center, nowrap);
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.2);
+  }
+  
+  .purchase-details {
+    @include flex(column, flex-start, flex-start, nowrap);
+    gap: 0.25rem;
+  }
+  
+  .purchase-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: $success-color;
+  }
+  
+  .purchase-info {
+    color: $text-secondary;
+    font-size: 0.9rem;
+    
+    span {
+      font-weight: 700;
+      color: $primary-color;
+    }
+  }
+}

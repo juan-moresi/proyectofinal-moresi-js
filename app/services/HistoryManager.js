@@ -74,9 +74,9 @@ export class HistoryManager {
             timestamp: new Date().toISOString()
         });
 
-        // Limitar el historial a 50 entradas
-        if (this.history.length > 50) {
-            this.history = this.history.slice(0, 50);
+        // Limitar el historial a 15 entradas
+        if (this.history.length > 15) {
+            this.history = this.history.slice(0, 15);
         }
 
         // Guardar en localStorage y actualizar UI si es necesario
@@ -203,30 +203,47 @@ export class HistoryManager {
         const historyList = document.createElement('div');
         historyList.className = 'history-list';
         
-        this.history.forEach(conversion => {
-            const date = new Date(conversion.timestamp);
+        this.history.forEach(entry => {
+            const date = new Date(entry.timestamp);
             const historyItem = document.createElement('div');
-            historyItem.className = 'conversion-result history-item';
             
-            historyItem.innerHTML = `
-                <div class="conversion-details">
-                    <div class="currency-info">
-                        <div class="currency-code">${conversion.fromCurrency}</div>
-                        <div class="currency-name">${conversion.fromCurrencyName || ''}</div>
-                        <div class="amount">${conversion.formattedAmount}</div>
+            // Determinar si es una conversión o una compra
+            const isPurchase = entry.type === 'purchase';
+            historyItem.className = isPurchase ? 'purchase-confirmation history-item' : 'conversion-result history-item';
+            
+            if (isPurchase) {
+                // Mostrar entrada de compra
+                historyItem.innerHTML = `
+                    <div class="purchase-content">
+                        <div class="purchase-icon">💰</div>
+                        <div class="purchase-details">
+                            <span class="purchase-title">Compra de moneda</span>
+                            <span class="purchase-info">Compraste ${entry.result} ${entry.to}</span>
+                            <div class="rate-timestamp">Fecha: ${date.toLocaleString()}</div>
+                        </div>
                     </div>
-                    <div class="arrow">➜</div>
-                    <div class="currency-info">
-                        <div class="currency-code">${conversion.toCurrency}</div>
-                        <div class="currency-name">${conversion.toCurrencyName || ''}</div>
-                        <div class="result">${conversion.formattedResult}</div>
+                `;
+            } else {
+                // Mostrar entrada de conversión (código existente)
+                historyItem.innerHTML = `
+                    <div class="conversion-details">
+                        <div class="currency-info">
+                            <div class="currency-code">${entry.fromCurrency || entry.from}</div>
+                            <div class="currency-name">${entry.fromCurrencyName || ''}</div>
+                            <div class="amount">${entry.formattedAmount || entry.amount}</div>
+                        </div>
+                        <div class="arrow">➜</div>
+                        <div class="currency-info">
+                            <div class="currency-code">${entry.toCurrency || entry.to}</div>
+                            <div class="currency-name">${entry.toCurrencyName || ''}</div>
+                            <div class="result">${entry.formattedResult || entry.result}</div>
+                        </div>
                     </div>
-                </div>
-                <div class="exchange-rate">
-                    1 ${conversion.fromCurrency} = ${(conversion.toRate / conversion.fromRate).toFixed(4)} ${conversion.toCurrency}
-                    <div class="rate-timestamp">Actualizado: ${date.toLocaleString()}</div>
-                </div>
-            `;
+                    <div class="exchange-rate">
+                        <div class="rate-timestamp">Actualizado: ${date.toLocaleString()}</div>
+                    </div>
+                `;
+            }
             
             historyList.appendChild(historyItem);
         });

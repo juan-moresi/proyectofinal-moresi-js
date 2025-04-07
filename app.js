@@ -4,6 +4,26 @@ import ChatBot from './app/ChatBot.js';
 // Create a single chatbot instance
 let chatbot;
 
+// Asegurarse de que currency esté disponible
+let currencyFunc;
+
+// Verificar si currency está disponible globalmente (desde el script en HTML)
+if (typeof window.currency !== 'undefined') {
+    currencyFunc = window.currency;
+} else {
+    // Definir una función de respaldo simple si currency.js no está disponible
+    currencyFunc = function(amount) {
+        const value = parseFloat(amount);
+        return {
+            value: value,
+            divide: function(divisor) { return currencyFunc(value / divisor); },
+            multiply: function(multiplier) { return currencyFunc(value * multiplier); },
+            format: function() { return value.toFixed(2); }
+        };
+    };
+    console.warn('La biblioteca currency.js no está disponible. Usando implementación de respaldo.');
+}
+
 // Configuración de tasas de cambio (estas deberían actualizarse con una API real)
 const exchangeRates = {
     USD: 1,
@@ -16,8 +36,8 @@ const exchangeRates = {
 // Función para convertir monedas
 function convertCurrency(amount, fromCurrency, toCurrency) {
     try {
-        const amountInUSD = currency(amount).divide(exchangeRates[fromCurrency]);
-        return currency(amountInUSD).multiply(exchangeRates[toCurrency]).value;
+        const amountInUSD = currencyFunc(amount).divide(exchangeRates[fromCurrency]);
+        return currencyFunc(amountInUSD).multiply(exchangeRates[toCurrency]).value;
     } catch (error) {
         console.error('Error en la conversión:', error);
         return null;
@@ -26,7 +46,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
 
 // Función para formatear moneda
 function formatCurrency(amount, currencyCode) {
-    return currency(amount, {
+    return currencyFunc(amount, {
         symbol: getCurrencySymbol(currencyCode),
         precision: 2
     }).format();
@@ -161,6 +181,25 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.key === 'Enter') {
                 handleUserMessage();
             }
+        });
+    }
+    
+    // Set up mobile menu toggle
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const utilityButtons = document.querySelector('.utility-buttons');
+    
+    if (mobileMenuToggle && mobileMenuOverlay && utilityButtons) {
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileMenuToggle.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            utilityButtons.classList.toggle('active');
+        });
+        
+        mobileMenuOverlay.addEventListener('click', () => {
+            mobileMenuToggle.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            utilityButtons.classList.remove('active');
         });
     }
 

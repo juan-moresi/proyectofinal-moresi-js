@@ -4,6 +4,7 @@ import { CurrencyManager } from './services/CurrencyManager.js';
 import { HistoryManager } from './services/HistoryManager.js';
 import { UIManager } from './services/UIManager.js';
 import { MessageHandler } from './services/MessageHandler.js';
+import { PurchaseManager } from './services/PurchaseManager.js';
 
 class ChatBot {
     constructor() {
@@ -30,6 +31,7 @@ class ChatBot {
         this.historyManager = new HistoryManager(this);
         this.uiManager = new UIManager(this);
         this.messageHandler = new MessageHandler(this);
+        this.purchaseManager = new PurchaseManager(this);
 
         // Inicialización asíncrona
         this.initializeAsync();

@@ -39,6 +39,14 @@
 }
 
 @media (max-width: $breakpoint-sm) {
+  /* Reposicionar el botón de limpiar chat en versión móvil */
+  #clearChatBtn {
+    position: static;
+    margin-top: 0.5rem;
+    width: 100%;
+    right: auto;
+  }
+  
   .message {
     padding: 0.75rem 1rem;
     font-size: 0.9rem;

@@ -133,6 +133,16 @@ export class MessageHandler {
                                 fromCurrencyName: fromCurrencyInfo.nombre,
                                 toCurrencyName: toCurrencyInfo.nombre
                             });
+                            
+                            // Mostrar panel de confirmación de compra
+                            setTimeout(() => {
+                                this.chatBot.purchaseManager.showPurchaseConfirmation({
+                                    from: state.fromCurrency,
+                                    to: state.toCurrency,
+                                    amount: state.amount,
+                                    result: result.amount
+                                });
+                            }, 1000); // Pequeño retraso para mejor experiencia de usuario
 
                         } catch (error) {
                             this.chatBot.addMessage(`Error: ${error.message}`, 'error');
