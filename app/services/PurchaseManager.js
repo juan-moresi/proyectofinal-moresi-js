@@ -6,7 +6,6 @@ export class PurchaseManager {
     constructor(chatBot) {
         this.chatBot = chatBot;
         
-        // Limpiar panel de compra existente
         const existingPanel = document.getElementById('purchasePanel');
         if (existingPanel) {
             existingPanel.remove();
@@ -39,11 +38,9 @@ export class PurchaseManager {
         purchasePanel.appendChild(purchaseContent);
         document.body.appendChild(purchasePanel);
 
-        // Agregar eventos a los botones
         const purchaseYesBtn = purchasePanel.querySelector('.purchase-yes');
         const purchaseNoBtn = purchasePanel.querySelector('.purchase-no');
 
-        // Evento para cerrar al hacer clic fuera del contenido
         purchasePanel.addEventListener('click', (e) => {
             if (e.target === purchasePanel) {
                 purchasePanel.style.display = 'none';
@@ -59,7 +56,6 @@ export class PurchaseManager {
             purchasePanel.style.display = 'none';
         });
 
-        // Agregar efectos hover a los botones
         const addHoverEffect = (button, isConfirm = false) => {
             button.addEventListener('mouseenter', () => {
                 button.style.transform = 'translateY(-2px)';
@@ -93,7 +89,6 @@ export class PurchaseManager {
             return;
         }
 
-        // Actualizar los datos en el panel
         const amountElement = purchasePanel.querySelector('#purchaseAmount');
         const currencyElement = purchasePanel.querySelector('#purchaseCurrency');
 
@@ -105,12 +100,8 @@ export class PurchaseManager {
             return;
         }
 
-        // Guardar los datos de conversión para usarlos en la compra
         this.currentConversion = conversionData;
-
-        // Mostrar el panel
         purchasePanel.style.display = 'flex';
-        console.log('Panel de compra mostrado', conversionData);
     }
 
     /**
@@ -119,7 +110,6 @@ export class PurchaseManager {
     completePurchase() {
         if (!this.currentConversion) return;
 
-        // Crear entrada para el historial
         const purchaseEntry = {
             timestamp: new Date(),
             type: 'purchase',
@@ -129,10 +119,8 @@ export class PurchaseManager {
             result: this.currentConversion.result
         };
 
-        // Agregar al historial usando el HistoryManager
         this.chatBot.historyManager.addToHistory(purchaseEntry);
 
-        // Mostrar mensaje de confirmación en el chat
         const purchaseMessage = document.createElement('div');
         purchaseMessage.className = 'message bot-message purchase-confirmation';
         purchaseMessage.innerHTML = `
@@ -148,7 +136,6 @@ export class PurchaseManager {
         document.getElementById('chatMessages').appendChild(purchaseMessage);
         document.getElementById('chatMessages').scrollTop = document.getElementById('chatMessages').scrollHeight;
 
-        // Limpiar la conversión actual
         this.currentConversion = null;
     }
 }

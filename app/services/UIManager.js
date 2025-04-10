@@ -17,7 +17,6 @@ export class UIManager {
             this.updateCurrenciesPanel();
         });
 
-        // Configurar el observer para monitorear cambios en el panel de monedas
         const currenciesPanel = document.querySelector('.currencies-panel');
         if (currenciesPanel) {
             observer.observe(currenciesPanel, {
@@ -31,7 +30,6 @@ export class UIManager {
         const tbody = document.querySelector('.currencies-table tbody');
         if (!tbody) return;
 
-        // Actualizar las tasas en la tabla
         const rows = tbody.querySelectorAll('tr');
         rows.forEach(row => {
             const codeCell = row.querySelector('.currency-code-cell');
@@ -80,7 +78,6 @@ export class UIManager {
         closeBtn.onclick = () => this.closeCurrenciesPanel(panel);
         panel.appendChild(closeBtn);
 
-        // Add search input
         const searchContainer = document.createElement('div');
         searchContainer.className = 'currency-search-container';
         const searchInput = document.createElement('input');
@@ -90,14 +87,12 @@ export class UIManager {
         searchContainer.appendChild(searchInput);
         panel.appendChild(searchContainer);
 
-        // Create scrollable container
         const scrollContainer = document.createElement('div');
         scrollContainer.className = 'currencies-scroll-container';
 
         const currenciesTable = document.createElement('table');
         currenciesTable.className = 'currencies-table';
         
-        // Create table header
         const thead = document.createElement('thead');
         thead.innerHTML = `
             <tr>
@@ -108,10 +103,11 @@ export class UIManager {
         `;
         currenciesTable.appendChild(thead);
         
-        // Create table body
         const tbody = document.createElement('tbody');
         
-        // Sort currencies: USD first, then alphabetically by code
+        /**
+         * Ordenar monedas: USD primero, luego alfabéticamente por código
+         */
         const sortedMonedas = [...this.chatBot.converter.monedas].sort((a, b) => {
             if (a.codigo === 'USD') return -1;
             if (b.codigo === 'USD') return 1;
@@ -132,7 +128,6 @@ export class UIManager {
         scrollContainer.appendChild(currenciesTable);
         panel.appendChild(scrollContainer);
 
-        // Add search functionality
         searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
             const rows = tbody.querySelectorAll('tr');
@@ -161,11 +156,9 @@ export class UIManager {
         const userInput = document.getElementById('userInput');
         const inputContainer = userInput.parentNode;
         
-        // Crear el contenedor del autocompletado
         const autocompleteList = document.createElement('div');
         autocompleteList.className = 'autocomplete-list';
         
-        // Insertar el autocompletado antes del input
         inputContainer.insertBefore(autocompleteList, userInput);
 
         userInput.addEventListener('input', (e) => {
@@ -194,7 +187,6 @@ export class UIManager {
             }
         });
 
-        // Cerrar el autocompletado cuando se hace clic fuera
         document.addEventListener('click', (e) => {
             if (!autocompleteList.contains(e.target) && e.target !== userInput) {
                 autocompleteList.style.display = 'none';
@@ -203,35 +195,28 @@ export class UIManager {
     }
 
     addClearChatButton() {
-        // Check if button already exists
         let clearChatBtn = document.getElementById('clearChatBtn');
         
-        // If button doesn't exist, create it
         if (!clearChatBtn) {
             clearChatBtn = document.createElement('button');
             clearChatBtn.id = 'clearChatBtn';
             clearChatBtn.textContent = 'Limpiar Chat';
             
-            // Add button to the chat header
             const chatHeader = document.querySelector('.chat-header');
             if (chatHeader) {
                 chatHeader.appendChild(clearChatBtn);
             }
         }
         
-        // Add event listener to the button
         clearChatBtn.addEventListener('click', () => {
             const chatMessages = document.getElementById('chatMessages');
             chatMessages.innerHTML = '';
             
-            // Reset placeholder to initial value
             const userInput = document.getElementById('userInput');
             userInput.placeholder = '💰 Ingresa el monto a convertir...';
             
-            // Reset conversion state
             this.chatBot.resetConversionState();
             
-            // Add welcome message only
             this.chatBot.addMessage(`Bienvenido ${this.chatBot.userName}! Para comenzar la conversión, ingresa el monto:`, 'bot');
         });
     }
