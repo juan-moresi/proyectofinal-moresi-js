@@ -34,7 +34,7 @@ const exchangeRates = {
 };
 
 // Función para convertir monedas
-function convertCurrency(amount, fromCurrency, toCurrency) {
+export function convertCurrency(amount, fromCurrency, toCurrency) {
     try {
         const amountInUSD = currencyFunc(amount).divide(exchangeRates[fromCurrency]);
         return currencyFunc(amountInUSD).multiply(exchangeRates[toCurrency]).value;
@@ -45,7 +45,7 @@ function convertCurrency(amount, fromCurrency, toCurrency) {
 }
 
 // Función para formatear moneda
-function formatCurrency(amount, currencyCode) {
+export function formatCurrency(amount, currencyCode) {
     return currencyFunc(amount, {
         symbol: getCurrencySymbol(currencyCode),
         precision: 2
@@ -53,7 +53,7 @@ function formatCurrency(amount, currencyCode) {
 }
 
 // Función para obtener el símbolo de la moneda
-function getCurrencySymbol(currencyCode) {
+export function getCurrencySymbol(currencyCode) {
     const symbols = {
         USD: '$',
         EUR: '€',

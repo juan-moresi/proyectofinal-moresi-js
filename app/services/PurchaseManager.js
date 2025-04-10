@@ -2,6 +2,8 @@
  * Clase que maneja la funcionalidad de compra de monedas
  * Gestiona el panel de confirmación y el proceso de compra ficticia
  */
+import { formatCurrency } from '../../app.js';
+
 export class PurchaseManager {
     constructor(chatBot) {
         this.chatBot = chatBot;
@@ -93,8 +95,9 @@ export class PurchaseManager {
         const currencyElement = purchasePanel.querySelector('#purchaseCurrency');
 
         if (amountElement && currencyElement) {
-            amountElement.textContent = conversionData.result;
-            currencyElement.textContent = conversionData.to;
+            // Aplicar formato de moneda al resultado
+            amountElement.textContent = formatCurrency(conversionData.result, conversionData.to);
+            currencyElement.textContent = '';
         } else {
             console.error('Elementos del panel de compra no encontrados');
             return;
@@ -128,7 +131,7 @@ export class PurchaseManager {
                 <div class="purchase-icon">✅</div>
                 <div class="purchase-details">
                     <span class="purchase-title">Compra realizada con éxito</span>
-                    <span class="purchase-info">Has comprado ${this.currentConversion.result} ${this.currentConversion.to}</span>
+                    <span class="purchase-info">Has comprado ${formatCurrency(this.currentConversion.result, this.currentConversion.to)}</span>
                 </div>
             </div>
         `;
