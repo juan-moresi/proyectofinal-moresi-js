@@ -1,5 +1,6 @@
 // Change this line to correctly point to the ChatBot in the app folder
 import ChatBot from './app/ChatBot.js';
+import './app/services/KeyboardManager.js';
 
 // Create a single chatbot instance
 let chatbot;
