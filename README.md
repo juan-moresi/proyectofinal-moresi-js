@@ -115,8 +115,5 @@ git status
 
 ---
 
-DIAGRAMA
-
-![diagram](https://github.com/user-attachments/assets/3853df5a-6a15-4e3e-91b4-630977693672)
 
 
